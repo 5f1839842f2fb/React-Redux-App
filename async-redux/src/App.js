@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 
 import { connect } from 'react-redux'
-import { testAction } from './rootreducer'
+import { getPosition } from './rootreducer'
 
 const App = props => {
 
+  useEffect(() => {
+    props.getPosition()
+  },[])
+
   const click = () => {
-    props.testAction()
+    props.getPosition()
   }
 
   return (
@@ -23,4 +27,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { testAction })(App)
+export default connect(mapStateToProps, { getPosition })(App)
