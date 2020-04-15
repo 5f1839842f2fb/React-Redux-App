@@ -4,7 +4,9 @@ import thunk from 'redux-thunk'
 
 // initial state
 const initialState = {
-  title: ''
+  title: '',
+  latitude: '',
+  longitude: ''
 }
 
 // ACTION_TYPES 
@@ -32,7 +34,9 @@ const rootReducer = (state = initialState, action) => {
     case GET_POSITON_SUCCESS:
       return {
         ...state,
-        title: `${action.payload.latitude}, ${action.payload.longitude}`
+        title: `${action.payload.latitude}, ${action.payload.longitude}`,
+        latitude: parseFloat(action.payload.latitude),
+        longitude: parseFloat(action.payload.longitude)
       }
     case GET_POSITON_FAILURE:
       return {
